@@ -12,6 +12,9 @@
 <table class="table">
     <tr>
         <th>
+            @Html.DisplayNameFor(model => model.IsDone)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.List.ListName)
         </th>
         <th>
@@ -23,15 +26,26 @@
         <th>
             @Html.DisplayNameFor(model => model.Details)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.IsDone)
-        </th>
+        
         <th></th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
         <td>
+            @*@Html.DisplayFor(modelItem => item.IsDone)*@
+            <a href="@Url.Action("ToggleDone", new { id = item.ItemID })">
+                <!--Here is the check box for IsDone-->
+                @if (item.IsDone)
+                {
+                    <span class="glyphicon glyphicon-check"></span>
+                }
+                else
+                {
+                    <span class="glyphicon glyphicon-unchecked"></span>
+                }
+            </a>
+<td>
             @Html.DisplayFor(modelItem => item.List.ListName)
         </td>
         <td>
@@ -43,8 +57,7 @@
         <td>
             @Html.DisplayFor(modelItem => item.Details)
         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.IsDone)
+       
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.ItemID }) |

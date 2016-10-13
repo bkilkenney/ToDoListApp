@@ -22,11 +22,11 @@ namespace ToDoListApp.Controllers
         }
 
         // GET: Items/Details/5
-        public ActionResult Details(int? id)
+        public ActionResult Details(int? id)  //? MARK MEANS IT CAN BE NULL
         {
             if (id == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest); //IF IT IS NULL...BAD REQUEST
             }
             Item item = db.Items.Find(id);
             if (item == null)
